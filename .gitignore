@@ -1,0 +1,5 @@
+# Dependencies
+node_modules/
+
+# Build artifacts - commented out since we need to commit the dist folder for GitHub Pages
+# dist/
