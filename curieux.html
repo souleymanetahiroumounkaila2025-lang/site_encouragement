@@ -1,3 +1,4 @@
+²
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,9 +18,10 @@
             <p class="filtre-footer-note">Un mot de la part de l'agence ORYX </p>
         </div>
     </section>
-    <!-- Croix rouge temporaire (mobile) -->
-    <div class="croix-mobile" id="croix-mobile"><i class="fa-solid fa-circle-xmark"></i></div>
-
+    <!-- Une seule balise pour la croix rouge mobile (les doublons sont supprimés) -->
+    <div class="croix-mobile" id="croix-mobile">
+        <i class="fa-solid fa-circle-xmark"></i>
+    </div>
     <script>
         const btnOui = document.getElementById('btn-oui');
         const btnNon = document.getElementById('btn-non');
@@ -73,17 +75,14 @@
         if (estTactile) {
             btnNon.addEventListener('click', (e) => {
                 e.preventDefault(); // Empêche l'action par défaut du clic
+                btnNon.style.transform = 'translate(3px, 1px)';
+                btnNon.style.backgroundColor = 'red'
 
-                // Affichage de la croix rouge temporaire
-                croixMobile.classList.add('visible');
-                setTimeout(() => croixMobile.classList.remove('visible'), 1200);
-
-                // Animation du bouton OUI pour attirer l'attention
-                btnOui.classList.add('danse');
-                setTimeout(() => btnOui.classList.remove('danse'), 2400);
             });
         }
     </script>
+
+
 
 
 

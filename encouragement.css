@@ -45,7 +45,7 @@ a {
 }
 
 
-/* ---------- HEADER (repris du site ORYX) ---------- */
+/* ---------- HEADER ---------- */
 
 .main-header {
     display: flex;
@@ -96,6 +96,8 @@ a {
     border: none;
     color: #f8f8f8;
     font-size: 1.4rem;
+    padding: 10px;
+    cursor: pointer;
 }
 
 @media (max-width:768px) {
@@ -110,12 +112,51 @@ a {
         padding: 20px;
         gap: 16px;
     }
-    .main-header .navlinks.open {
+    .main-header .navl-inks.open {
         display: flex;
     }
     .burger {
         display: block;
+        order: 2;
+        margin-left: auto;
     }
+}
+
+.main-header .nav-links.open {
+    display: flex !important;
+    /* Force l'apparition */
+    flex-direction: column;
+    /* Empile les liens verticalement */
+}
+
+
+/* 1. Modifie le fond du menu (le conteneur <ul>) après le déroulement */
+
+.main-header .nav-links.open {
+    display: flex !important;
+    flex-direction: column;
+    background-color: var(--violet);
+    /* REMPLACEZ PAR VOTRE COULEUR (ex: bleu foncé, rouge, etc.) */
+}
+
+
+/* 2. Modifie la couleur des liens hypertextes (<a>) à l'intérieur du menu ouvert */
+
+.main-header .nav-links.open a {
+    color: #ffffff;
+    /* Couleur du texte (ici: blanc) */
+    text-decoration: none;
+    /* Enlève le soulignement si besoin */
+}
+
+
+/* 3. Modifie la couleur du bouton de contact (<span>) à l'intérieur du menu ouvert */
+
+.main-header .nav-links.open #cta-contact-whatsapp {
+    color: #ffffff;
+    /* Couleur du texte du bouton */
+    background-color: #25d366;
+    /* Couleur de fond du bouton (ex: vert WhatsApp) */
 }
 
 
@@ -213,17 +254,6 @@ a {
     max-width: 500px;
     height: auto;
     display: block;
-}
-
-@keyframes riseIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 
@@ -374,7 +404,7 @@ a {
     }
 }
 
-/
+
 /* ---------- FOOTER MINIMAL ---------- */
 
 .footer-mini {

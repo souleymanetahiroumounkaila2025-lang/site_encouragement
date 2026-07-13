@@ -92,15 +92,6 @@
     </footer>
 
     <script>
-        /* ============ Menu burger (mobile) ============ */
-        const burgerBtn = document.getElementById('burgerBtn');
-        const navLinks = document.querySelector('.nav-links');
-        if (burgerBtn && navLinks) {
-            burgerBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-            navLinks.querySelectorAll('a, span').forEach(el => {
-                el.addEventListener('click', () => navLinks.classList.remove('open'));
-            });
-        }
         /* ============ Liens WhatsApp ============ */
         window.addEventListener('DOMContentLoaded', () => {
             const indicatif = "227";
@@ -116,6 +107,22 @@
             }
 
         });
+    </script>
+    <script>
+        // Ouverture / fermeture du menu burger           
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navLinks = document.querySelector('.nav-links');
+        if (burgerBtn && navLinks) {
+            burgerBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+            // Ferme le menu automatiquement quand on clique sur un lien 
+            navLinks.querySelectorAll('a, span').forEach(el => {
+                el.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                });
+            });
+        }
     </script>
 
 </body>
