@@ -1,0 +1,225 @@
+            /* =========================================== ==============   PAGES FILTRES — charte ORYX (mêmes tokens que encouragement.css) =========================================== ============== */
+            
+            @import url('https://fonts.googleapis.com/css2? family=Poppins:wght@400;600;700;800&family= Fraunces:opsz,wght@9..144,500;9..144,700&di splay=swap');
+             :root {
+                --marine: #0b0b46;
+                --violet: #12058abd;
+                --accent: #5c67f2;
+                --vert: #059669;
+                --texte-clair: #e9e9f5;
+                --ease: 280ms cubic-bezier(.22, .61, .36, 1);
+            }
+            
+            * {
+                box-sizing: border-box;
+            }
+            
+            html,
+            body {
+                height: 100%;
+            }
+            
+            body {
+                margin: 0;
+                font-family: 'Poppins', Arial, sans-serif;
+                color: #fff;
+                overflow-x: hidden;
+            }
+            
+            .filtre-page {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 40px 6%;
+                text-align: center;
+                background: radial-gradient(120% 140% at 15% -10%, #1a1470 0%, var(--marine) 55%, #06062b 100%);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .filtre-page::before {
+                content: "";
+                position: absolute;
+                width: 520px;
+                height: 520px;
+                background: radial-gradient(circle, rgba(92, 103, 242, .30) 0%, transparent 70%);
+                top: -180px;
+                right: -140px;
+                pointer-events: none;
+            }
+            
+            .filtre-card {
+                max-width: 560px;
+                width: 100%;
+                opacity: 0;
+                animation: riseIn 800ms var(--ease) forwards;
+            }
+            
+            @keyframes riseIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(16px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .filtre-logo {
+                height: 56px;
+                width: 56px;
+                border-radius: 28px;
+                border: 2px solid #f1f1f1;
+                margin-bottom: 28px;
+            }
+            
+            .eyebrow {
+                display: inline-block;
+                font-size: .76rem;
+                letter-spacing: .14em;
+                text-transform: uppercase;
+                color: var(--accent);
+                border: 1px solid rgba(92, 103, 242, .5);
+                padding: 6px 16px;
+                border-radius: 999px;
+                margin-bottom: 22px;
+            }
+            
+            .filtre-question {
+                font-family: 'Fraunces', Georgia, serif;
+                font-size: clamp(1.6rem, 1.1rem + 3vw, 2.6rem);
+                line-height: 1.25;
+                margin: 0 0 42px;
+                .filtre-buttons {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    gap: 22px;
+                    flex-wrap: wrap;
+                    min-height: 64px;
+                }
+                .btn-filtre {
+                    border: none;
+                    cursor: pointer;
+                    font-family: 'Poppins', Arial, sans-serif;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    padding: 15px 40px;
+                    border-radius: 32px;
+                    transition: transform var(--ease), boxshadow var(--ease);
+                }
+                .btnfiltre:hover {
+                    transform: translateY(-2px);
+                }
+                .btn-oui {
+                    background: var(--vert);
+                    color: #fff;
+                    box-shadow: 0 10px 24px rgba(5, 150, 105, .35);
+                }
+                .btn-non {
+                    background: transparent;
+                    color: #fff;
+                    border: 1.5px solid rgba(255, 255, 255, .5);
+                }
+                /* Le bouton Non en mode "fuite" (desktop) */
+                .btn-non.fuite {
+                    position: fixed;
+                    z-index: 80;
+                    transition: left 260ms ease, top 260ms ease;
+                }
+                /* Message qui apparaît après plusieurs tentatives ratées */
+                .msg-fuite {
+                    display: none;
+                    margin-top: 26px;
+                    font-size: .9rem;
+                    color: var(--texte-clair);
+                    opacity: 0;
+                }
+                .msg-fuite.visible {
+                    display: block;
+                    animation: riseIn 500ms var(--ease) forwards;
+                }
+                /* Croix rouge temporaire (mobile) */
+                .croix-mobile {
+                    position: fixed;
+                    inset: 0;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 90;
+                    pointer-events: none;
+                }
+                .croix-mobile.visible {
+                    display: flex;
+                }
+                .croix-mobile i {
+                    font-size: 5rem;
+                    color: #e63946;
+                    animation: popCroix 260ms var(--ease);
+                    filter: drop-shadow(0 6px 18px rgba(230, 57, 70, .5));
+                }
+                @keyframes popCroix {
+                    from {
+                        transform: scale(.4);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+                /* Animation "danse" du bouton Oui (mobile) */
+                @keyframes danseOui {
+                    0%,
+                    100% {
+                        transform: translate(0, 0) rotate(0deg);
+                    }
+                    15% {
+                        transform: translate(-10px, -4px) rotate(-6deg);
+                    }
+                    30% {
+                        transform: translate(12px, 3px) rotate(5deg);
+                    }
+                    45% {
+                        transform: translate(-8px, 4px) rotate(-4deg);
+                    }
+                    60% {
+                        transform: translate(10px, -3px) rotate(4deg);
+                    }
+                    75% {
+                        transform: translate(-6px, 2px) rotate(-3deg);
+                    }
+                    90% {
+                        transform: translate(4px, -2px) rotate(2deg);
+                    }
+                }
+                .btn-oui.danse {
+                    animation: danseOui 420ms ease-in-out 5;
+                }
+                .filtre-footer-note {
+                    margin-top: 40px;
+                    font-size: .78rem;
+                    color: rgba(233, 233, 245, .6);
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .filtre-card,
+                    .msg-fuite {
+                        animation: none !important;
+                        opacity: 1 !important;
+                    }
+                    .btn-oui.danse {
+                        animation: none !important;
+                    }
+                    .btn-non.fuite {
+                        transition: none;
+                    }
+                }
+                #btn-non {
+                    /* Garde le bouton stable et ajoute un effet de glissement */
+                    display: inline-block;
+                    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+                    will-change: transform;
+                }
+            }

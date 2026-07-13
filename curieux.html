@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curieux ? | ORYX</title>
+    <meta name="description" content="Un message d'ORYX pour les candidats au Baccalauréat 2026.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="filtre.css"> </head>
+
+<body>
+    <section class="filtre-page">
+        <div class="filtre-card"> <img class="filtre-logo" src="oryx_2_logo.png" alt="Logo Oryx"> <span class="eyebrow">Dernière question</span>
+            <h1 class="filtre-question" id="question-text"> Curieux de savoir ce que cette page te réserve, même si tu n'es pas candidat ? </h1>
+            <div class="filtre-buttons" id="filtre-buttons"> <button class="btn-filtre btn-oui" id="btn-oui">Oui</button> <button class="btn-filtre btn-non" id="btn-non">Non</button> </div>
+            <p class="filtre-footer-note">Un mot de la part de l'agence ORYX </p>
+        </div>
+    </section>
+    <!-- Croix rouge temporaire (mobile) -->
+    <div class="croix-mobile" id="croix-mobile"><i class="fa-solid fa-circle-xmark"></i></div>
+
+    <script>
+        const btnOui = document.getElementById('btn-oui');
+        const btnNon = document.getElementById('btn-non');
+        const croixMobile = document.getElementById('croix-mobile');
+
+        // 1. Détection universelle du tactile
+        const estTactile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        // Fonction de redirection commune
+        function allerVersEncouragement() {
+            window.location.href = "encouragement.html";
+        }
+
+        // Le bouton OUI redirige toujours l'utilisateur
+        btnOui.addEventListener('click', allerVersEncouragement);
+
+        /* ================= 2. VERSION PC : Le bouton "Non" fuit comme un aimant ================= */
+        if (!estTactile) {
+            const RAYON_ACTION = 150; // Zone d'influence autour du bouton (en pixels)
+            const FORCE_POUSSEE = 0.6; // Plus le chiffre est grand, plus le bouton fuit loin
+
+            document.addEventListener('mousemove', (e) => {
+                // Trouver le centre exact du bouton Non
+                const rect = btnNon.getBoundingClientRect();
+                const btnX = rect.left + rect.width / 2;
+                const btnY = rect.top + rect.height / 2;
+
+                // Calculer l'écart entre la souris et le centre du bouton
+                const deltaX = btnX - e.clientX;
+                const deltaY = btnY - e.clientY;
+                const distance = Math.hypot(deltaX, deltaY);
+
+                // Si la souris entre dans la zone d'action, on repousse le bouton
+                if (distance < RAYON_ACTION) {
+                    const intensite = (RAYON_ACTION - distance) * FORCE_POUSSEE;
+                    const angle = Math.atan2(deltaY, deltaX);
+
+                    const bougeX = Math.cos(angle) * intensite;
+                    const bougeY = Math.sin(angle) * intensite;
+
+                    // Déplacement dynamique proportionnel
+                    btnNon.style.transform = `translate(${bougeX}px, ${bougeY}px)`;
+                } else {
+                    // Dès que la souris s'éloigne, le bouton reprend sa position d'origine
+                    btnNon.style.transform = 'translate(0px, 0px)';
+                }
+            });
+        }
+
+        /* ================= 3. VERSION MOBILE : Croix rouge + Bouton Oui qui danse ================= */
+        if (estTactile) {
+            btnNon.addEventListener('click', (e) => {
+                e.preventDefault(); // Empêche l'action par défaut du clic
+
+                // Affichage de la croix rouge temporaire
+                croixMobile.classList.add('visible');
+                setTimeout(() => croixMobile.classList.remove('visible'), 1200);
+
+                // Animation du bouton OUI pour attirer l'attention
+                btnOui.classList.add('danse');
+                setTimeout(() => btnOui.classList.remove('danse'), 2400);
+            });
+        }
+    </script>
+
+
+
+</body>
+
+</html>

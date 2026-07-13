@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message aux candidats au Bac 2026 | ORYX</title>
+    <meta name="description" content="Un message d'encouragement pour les candidats au Baccalauréat 2026, par ORYX.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="encouragement.css"> </head>
+
+<body>
+    <header class="main-header">
+        <div class="logo"><img src="oryx_2_logo.png" alt="Logo Oryx"></div> <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu"><i class="fa-solid fa-bars"></i></button>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#mur">Messages</a></li>
+                <li><a href="#conseils">Conseils</a></li>
+                <li><span id="cta-contact-whatsapp" class="CTA">Nous contacter</span></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ================= HERO ================= -->
+    <section class="hero-encourage" id="hero">
+        <span class="eyebrow">Bac session 2026</span>
+        <h1>Tu es prêt<span>(e)</span>.</h1>
+        <p class="hero-sub"> Le bac ne mesure pas ta valeur, il mesure ton travail — et toi, tu as travaillé. Ce message est pour toi, de la part de toute l'équipe ORYX. </p>
+
+
+    </section>
+    <section class="hero-section " id="accueil">
+        <!-- Colonne Gauche : Contenu écrit -->
+        <div class="hero-content ">
+            <h1 class="hero-title ">Oryx vous souhaite une bonne chance pour le BACALAUREAT session 2026</h1>
+            <h3>Qu'Allah vous accorde le BAC aec mention excellent</h3>
+            <p class="hero-description ">Ayez confiance en vous, vous avez tous les éléments nécessaires et surtout priez, priez et priez.</p>
+
+        </div>
+        <!-- Colonne Gauche : Contenu imagé -->
+        <div class="hero-image-container "> <img src="toque.png " alt="Créateur " class="hero-image "> </div>
+
+    </section>
+    <!-- ================= MUR DE MESSAGES ================= -->
+    <section class="mur-section" id="mur">
+        <div class="mur-header">
+            <h2>Des messages laissés par l'agence ORYX pour tous les candidats.</h2>
+
+        </div>
+        <div class="mur-scroll">
+            <div class="msg-card"> <i class="fa-solid fa-quote-left"></i>
+                <p>Chaque nuit blanche que tu as passée à réviser compte déjà comme une victoire, quel que soit le résultat.</p>
+                <div class="signature">— L'équipe ORYX</div>
+            </div>
+            <div class="msg-card"> <i class="fa-solid fa-quote-left"></i>
+                <p>Le stress d'aujourd'hui est la preuve que ça compte pour toi. C'est une bonne nouvelle, pas un problème.</p>
+                <div class="signature">— L'équipe ORYX</div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ================= CONSEILS ================= -->
+    <section class="conseils-section" id="conseils">
+        <div class="container">
+            <div class="mur-header">
+                <h2>Derniers conseils avant l'épreuve</h2>
+            </div>
+            <div class="conseils-grid">
+                <div class="conseil-card"> <i class="fa-solid fa-moon"></i>
+                    <h3>Dors, vraiment</h3>
+                    <p>Une bonne nuit vaut mieux qu'une révision de plus. Tu as boen merité ce repos après plusieurs mois de travail archarné.</p>
+                </div>
+
+                <div class="conseil-card"> <i class="fa-solid fa-ban"></i>
+                    <h3>Arrêtes les révisions la veille au soir </h3>
+                    <p>Après un certain point, réviser augmente le stress plus que les connaissances. Fais-toi confiance.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="footer-mini"> Réalisé par
+            <a href="https://vitrineoryx.netlify.app" target="_blank" rel="noopener">
+                <div class="logo"> <img style="height: 80px; width: 80px; border-radius: 40px; border: 2px solid #F1f1f1" src="oryx_2_logo.png" alt="Logo Oryx"> </div> ORYX
+            </a> — Niamey, Niger
+
+        </div>
+        <hr style="opacity: 0.3">
+        <div class="footer-bottom text-center pt-3 mt-4 "> &copy; <span id="year "></span> ORYX. Tous droits réservés.</div>
+    </footer>
+
+    <script>
+        /* ============ Menu burger (mobile) ============ */
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navLinks = document.querySelector('.nav-links');
+        if (burgerBtn && navLinks) {
+            burgerBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+            navLinks.querySelectorAll('a, span').forEach(el => {
+                el.addEventListener('click', () => navLinks.classList.remove('open'));
+            });
+        }
+        /* ============ Liens WhatsApp ============ */
+        window.addEventListener('DOMContentLoaded', () => {
+            const indicatif = "227";
+            const p1 = "81",
+                p2 = "08",
+                p3 = "39",
+                p4 = "51"; // Contact ORYX (header)  
+            const msgContact = "Bonjour M. le PDG de l'agence ORYX, je vous contacte au sujet de la page d'encouragement bac. ";
+            const lienContact = `https://wa.me/${indicatif}${p1}${p2}${p3}${p4}?text=${encodeURIComponent(msgContact)}`;
+            const ctaContact = document.getElementById('cta-contact-whatsapp');
+            if (ctaContact) {
+                ctaContact.innerHTML = `<a href="${lienContact}" target="_blank" style="color:inherit;">Nous contacter</a>`
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Une question avant de commencer | ORYX</title>
+    <meta name="description" content="Un message d'ORYX pour les candidats au Baccalauréat 2026.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="filtre.css"> </head>
+
+<body>
+    <section class="filtre-page">
+        <div class="filtre-card"> <img class="filtre-logo" src="oryx_2_logo.png" alt="Logo Oryx">
+            <span class="eyebrow">Avant de commencer</span>
+            <h1 class="filtre-question">Es-tu candidat au Baccalauréat, session 2026 ?</h1>
+            <div class="filtre-buttons"> <button class="btn-filtre btn-oui" id="btn-oui">Oui</button> <button class="btn-filtre btn-non" id="btn-non">Non</button> </div>
+            <p class="filtre-footer-note">Un mot de la part de l'agence ORYX </p>
+        </div>
+    </section>
+    <script>
+        document.getElementById('btn-oui').addEventListener('click', () => {
+            window.location.href = "encouragement.html";
+        });
+        document.getElementById('btn-non').addEventListener('click', () => {
+            window.location.href = "curieux.html";
+        });
+    </script>
+</body>
+
+</html>
